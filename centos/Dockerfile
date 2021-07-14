@@ -17,7 +17,7 @@ RUN yum -y groups mark install "Development Tools" && \
 
 # install protobuf-2.5.0
 ARG JAVA_HOME_ARG="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64/jre"
-ARG HADOOP_HOME_ARG="/hadoop/hadoop-dist/target/hadoop-2.9.2"
+ARG HADOOP_HOME_ARG="/hadoop/hadoop-dist/target/hadoop-2.7.3"
 
 RUN wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz
 
@@ -35,7 +35,7 @@ RUN tar -xzf protobuf-2.5.0.tar.gz && \
 # build hadoop
 RUN cd / && git clone https://github.com/apache/hadoop.git && \
     cd hadoop && \
-    git checkout rel/release-2.9.2 && \
+    git checkout rel/release-2.7.3 && \
     mvn package -Pdist,native -DskipTests -Dtar -Dmaven.javadoc.skip=true
 
 WORKDIR /hadoop
